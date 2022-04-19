@@ -119,13 +119,19 @@ npm install -g yarn
 0.  **Ensure your tsconfig.json enables the compiler's strict mode.**
     **Zod requires it and so do we, you will experience TS errors without strict mode enabled**
 
-1.  Add zod-prisma as a dev dependency
+2.  Add zod as a dependency
+
+    ```sh
+    yarn add zod
+    ```
+
+3.  Add zod-prisma as a dev dependency
 
     ```sh
     yarn add -D zod-prisma
     ```
 
-2.  Add the zod-prisma generator to your schema.prisma
+4.  Add the zod-prisma generator to your schema.prisma
 
     ```prisma
     generator zod {
@@ -152,8 +158,8 @@ npm install -g yarn
     }
     ```
 
-3.  Run `npx prisma generate` or `yarn prisma generate` to generate your zod schemas
-4.  Import the generated schemas form your selected output location
+5.  Run `npx prisma generate` or `yarn prisma generate` to generate your zod schemas
+6.  Import the generated schemas form your selected output location
 
 <!-- USAGE EXAMPLES -->
 
