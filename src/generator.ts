@@ -49,6 +49,7 @@ export const writeImportsForModel = (
 	const relationFields = model.fields.filter((f) => f.kind === 'object')
 	const relativePath = path.relative(outputPath, clientPath)
 
+	console.log({ model, enumFields, relationFields, relativePath })
 	if (enumFields.length > 0) {
 		importList.push({
 			kind: StructureKind.ImportDeclaration,
