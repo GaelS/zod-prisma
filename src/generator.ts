@@ -1,5 +1,6 @@
 import path from 'path'
 import { DMMF } from '@prisma/generator-helper'
+import _ from 'lodash'
 import {
 	ImportDeclarationStructure,
 	SourceFile,
@@ -44,7 +45,7 @@ export const writeImportsForModel = (
 		})
 	}
 
-	const enumFields = model.fields.filter((f) => f.kind === 'enum')
+	const enumFields = _.uniq(model.fields.filter((f) => f.kind === 'enum'))
 	const relationFields = model.fields.filter((f) => f.kind === 'object')
 	const relativePath = path.relative(outputPath, clientPath)
 
