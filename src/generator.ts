@@ -45,11 +45,13 @@ export const writeImportsForModel = (
 		})
 	}
 
-	const enumFields = _.uniq(model.fields.filter((f) => f.kind === 'enum'))
+	const enumFields = _.uniqBy(
+		model.fields.filter((f) => f.kind === 'enum'),
+		'type'
+	)
 	const relationFields = model.fields.filter((f) => f.kind === 'object')
 	const relativePath = path.relative(outputPath, clientPath)
 
-	console.log({ model, enumFields, relationFields, relativePath })
 	if (enumFields.length > 0) {
 		importList.push({
 			kind: StructureKind.ImportDeclaration,

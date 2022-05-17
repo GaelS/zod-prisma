@@ -177,16 +177,10 @@ const writeImportsForModel = (model, sourceFile, config, {
     });
   }
 
-  const enumFields = ___default["default"].uniq(model.fields.filter(f => f.kind === 'enum'));
+  const enumFields = ___default["default"].uniqBy(model.fields.filter(f => f.kind === 'enum'), 'type');
 
   const relationFields = model.fields.filter(f => f.kind === 'object');
   const relativePath = path__default["default"].relative(outputPath, clientPath);
-  console.log({
-    model,
-    enumFields,
-    relationFields,
-    relativePath
-  });
 
   if (enumFields.length > 0) {
     importList.push({
